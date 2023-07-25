@@ -14,6 +14,7 @@ bool ArrowBuyCreate(const long            chart_ID=0,        // chart's ID
                     const int             sub_window=0,      // subwindow index
                     datetime              time=0,            // anchor point time
                     double                price=0,           // anchor point price
+                    bool                  isUp = true,                    
                     const color           clr=C'3,95,172',   // sign color
                     const ENUM_LINE_STYLE style=STYLE_SOLID, // line style (when highlighted)
                     const int             width=1,           // line size (when highlighted)
@@ -27,7 +28,7 @@ bool ArrowBuyCreate(const long            chart_ID=0,        // chart's ID
 //--- reset the error value
    ResetLastError();
 //--- create the sign
-   if(!ObjectCreate(chart_ID,name,OBJ_ARROW_BUY,sub_window,time,price))
+   if(!ObjectCreate(chart_ID,name,isUp? OBJ_ARROW_UP:OBJ_ARROW_DOWN,sub_window,time,price))
      {
       Print(__FUNCTION__,
             ": failed to create \"Buy\" sign! Error code = ",GetLastError());
@@ -49,6 +50,10 @@ bool ArrowBuyCreate(const long            chart_ID=0,        // chart's ID
 //--- set the priority for receiving the event of a mouse click in the chart
    ObjectSetInteger(chart_ID,name,OBJPROP_ZORDER,z_order);
 //--- successful execution
+   
+   //set rotation
+   ObjectSetDouble(0,name,OBJPROP_ANGLE,45);
+
    return(true);
   }
 //+------------------------------------------------------------------+
