@@ -34,13 +34,13 @@
 string notificationName="";
 const string ArrowAlias = "Arrow";
 const string LabelAlias = "Label";
-
+int counter =0;
     
   //returns the object name
  string CreateNotfication(datetime   time=0,            // anchor point time
                          double     price=0,
                          bool isUp = true) {          // anchor point price){
-   static int counter =0;
+   
    string objectName = "Notification_" + (string)counter+"_";
    string arrowName = objectName+"Arrow";
    string labelName = objectName+"Label";
@@ -71,4 +71,10 @@ const string LabelAlias = "Label";
 
 void DeleteNotificationLabel(string name){
    LabelDelete(name + LabelAlias);
+}
+
+void ClearAllNotifications(){
+   for(int i=0;i<counter;i++){
+      DeleteNotification("Notification_" + (string)i+"_");
+   }
 }
