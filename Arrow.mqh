@@ -4,8 +4,6 @@
 //--- display window of the input parameters during the script's launch
 #property script_show_inputs
 #property library
-//--- input parameters of the script
-input color InpColor=C'3,95,172'; // Color of signs
 //+------------------------------------------------------------------+
 //| Create Buy sign                                                  |
 //+------------------------------------------------------------------+
@@ -15,7 +13,7 @@ bool ArrowBuyCreate(const long            chart_ID=0,        // chart's ID
                     datetime              time=0,            // anchor point time
                     double                price=0,           // anchor point price
                     bool                  isUp = true,                    
-                    const color           clr=C'3,95,172',   // sign color
+                    const color           clr=C'255,95,172',   // sign color
                     const ENUM_LINE_STYLE style=STYLE_SOLID, // line style (when highlighted)
                     const int             width=1,           // line size (when highlighted)
                     const bool            back=false,        // in the background
@@ -51,8 +49,8 @@ bool ArrowBuyCreate(const long            chart_ID=0,        // chart's ID
    ObjectSetInteger(chart_ID,name,OBJPROP_ZORDER,z_order);
 //--- successful execution
    
-   //set rotation
-   ObjectSetDouble(0,name,OBJPROP_ANGLE,45);
+   
+   ObjectSetInteger(chart_ID,name,OBJPROP_ANCHOR,isUp? ANCHOR_TOP:ANCHOR_BOTTOM);   
 
    return(true);
   }

@@ -46,16 +46,27 @@ int counter =0;
    string labelName = objectName+"Label";
    
    counter++;
-      
-   ArrowBuyCreate(0,arrowName,0,time,price,isUp);
    
-   //calc offset
+   
+   //calc label offset
    double max,min;
    ChartGetDouble(0,CHART_PRICE_MAX,0,max);
    ChartGetDouble(0,CHART_PRICE_MIN,0,min);   
    double labelOffset = (max  - min)*0.05;
+      
+   if(isUp){
+      ArrowBuyCreate(0,arrowName,0,time,price,isUp,C'255,95,172',STYLE_SOLID,3);
+      LabelCreate(labelName,0,time,price+labelOffset,"KUPUJ");            
+   }
+   else{
+      ArrowBuyCreate(0,arrowName,0,time,price,isUp,C'255,255,0',STYLE_SOLID,3);
+      labelOffset*=2;
+      LabelCreate(labelName,0,time,price+labelOffset,"Sprzedaj");            
+   }
    
-   LabelCreate(labelName,0,time,price+labelOffset,"KUPUJ");            
+   
+   
+   
    ChartRedraw();   
    
    
