@@ -41,6 +41,7 @@ bool LabelCreate(const string            name="Label",             // label name
 //--- set label coordinates
    //ObjectSetInteger(chart_ID,name,OBJPROP_XDISTANCE,x);
    //ObjectSetInteger(chart_ID,name,OBJPROP_YDISTANCE,y);
+         
 //--- set the text
    ObjectSetString(chart_ID,name,OBJPROP_TEXT,text);
 //--- set text font
