@@ -55,11 +55,11 @@ int counter =0;
    double labelOffset = (max  - min)*0.05;
       
    if(isUp){
-      ArrowBuyCreate(0,arrowName,0,time,price,isUp,C'255,95,172',STYLE_SOLID,3);
+      ArrowBuyCreate(0,arrowName,0,time,price,isUp,C'0,255,0',STYLE_SOLID,3);
       LabelCreate(labelName,0,time,price+labelOffset,"KUPUJ");            
    }
    else{
-      ArrowBuyCreate(0,arrowName,0,time,price,isUp,C'255,255,0',STYLE_SOLID,3);
+      ArrowBuyCreate(0,arrowName,0,time,price,isUp,C'255,0,0',STYLE_SOLID,3);
       labelOffset*=2;
       LabelCreate(labelName,0,time,price+labelOffset,"Sprzedaj");            
    }
