@@ -80,8 +80,8 @@ bool RectanglePointChange(const long   chart_ID=0,       // chart's ID
 //+------------------------------------------------------------------+
 //| Delete the rectangle                                             |
 //+------------------------------------------------------------------+
-bool RectangleDelete(const long   chart_ID=0,       // chart's ID
-                     const string name="Rectangle") // rectangle name
+bool RectangleDelete(string name="Rectangle", // rectangle name
+                     const long   chart_ID=0)       // chart's IDconst 
   {
 //--- reset the error value
    ResetLastError();
